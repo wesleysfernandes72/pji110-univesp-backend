@@ -1,12 +1,15 @@
 # services/fornecedor_service.py
-
+from fastapi import Depends
+from sqlalchemy.orm import Session
+from database.connection import get_db
 from repositories.fornecedor_repository import FornecedorRepository
-from database.connection import SessionLocal
 
 class FornecedorService:
 
-    def __init__(self):
-        db = SessionLocal()
+    def __init__(
+            self,
+            db: Session = Depends(get_db)
+    ):
         self.repository = FornecedorRepository(db)
 
     def create(self, fornecedor_data):

@@ -1,12 +1,15 @@
 # services/produto_service.py
-
+from fastapi import Depends
+from sqlalchemy.orm import Session
 from repositories.produto_repository import ProdutoRepository
-from database.connection import SessionLocal
+from database.connection import get_db
 
 class ProdutoService:
 
-    def __init__(self):
-        db = SessionLocal()
+    def __init__(
+        self,
+        db: Session = Depends(get_db)
+    ):
         self.repository = ProdutoRepository(db)
 
     def create(self, produto_data):
