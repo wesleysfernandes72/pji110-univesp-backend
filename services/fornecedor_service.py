@@ -14,3 +14,13 @@ class FornecedorService:
 
     def update(self, fornecedor_id, fornecedor_data):
         return self.repository.update(fornecedor_id, fornecedor_data)
+
+    def delete(self, fornecedor_id):
+        return self.repository.delete(fornecedor_id)
+
+    def get_by_id(self, fornecedor_id):
+        return self.repository.get_by_id(fornecedor_id)
+
+    def get_all(self):
+        return self.repository.get_all()
+

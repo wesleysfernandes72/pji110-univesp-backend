@@ -1,4 +1,4 @@
-# models/task_model.py
+# models/fornecedor_model.py
 
 from sqlalchemy import Column, Integer, String
 

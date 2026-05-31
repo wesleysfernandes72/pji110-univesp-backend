@@ -34,3 +34,26 @@ class FornecedorRepository:
         self.db.refresh(fornecedor)
 
         return fornecedor
+
+    def delete(self, fornecedor_id):
+
+        fornecedor = self.db.query(Fornecedor).get(fornecedor_id)
+
+        if not fornecedor:
+            return None
+
+        self.db.delete(fornecedor)
+        self.db.commit()
+
+        return True
+
+    def get_by_id(self, fornecedor_id):
+
+        fornecedor = self.db.query(Fornecedor).get(fornecedor_id)
+        if not fornecedor:
+            return None
+
+        return fornecedor
+
+    def get_all(self):
+        return self.db.query(Fornecedor).all()
